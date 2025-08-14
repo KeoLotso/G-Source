@@ -16,7 +16,7 @@ function showLogin() {
   avatarEl.style.display = 'none'
 }
 
-displayNameEl.onclick = () => {
+displayNameEl.parentElement.onclick = () => {
   if (!localStorage.getItem('discord_user')) {
     window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${scopes}`
   } else {
@@ -25,21 +25,29 @@ displayNameEl.onclick = () => {
   }
 }
 
-const params = new URLSearchParams(window.location.search)
-const code = params.get('code')
+async function handleOAuthCode() {
+  const params = new URLSearchParams(window.location.search)
+  const code = params.get('code')
 
-if (code) {
-  fetch('/api/exchange', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ code })
-  })
-    .then(res => res.json())
-    .then(user => {
+  if (code) {
+    try {
+      const res = await fetch('/api/exchange', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code })
+      })
+
+      if (!res.ok) throw new Error('Login failed')
+
+      const user = await res.json()
       localStorage.setItem('discord_user', JSON.stringify(user))
-      window.history.replaceState({}, document.title, '/')
+      window.history.replaceState({}, document.title, '/') 
       showUser(user)
-    })
+    } catch (err) {
+      console.error(err)
+      showLogin()
+    }
+  }
 }
 
 const storedUser = localStorage.getItem('discord_user')
@@ -47,4 +55,5 @@ if (storedUser) {
   showUser(JSON.parse(storedUser))
 } else {
   showLogin()
+  handleOAuthCode()
 }
