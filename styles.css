@@ -1,80 +1,177 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial;
-    background: #0b0d12;
-    color: #e5e7eb;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: #e5e7eb;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 header {
-    position: sticky;
-    top: 0;
-    background: #0f172a;
-    border-bottom: 1px solid #1f2937;
-    padding: .8rem 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: saturate(180%) blur(6px)
+  position: sticky;
+  top: 0;
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .logo {
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: .3px
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
 }
 
-#user-info {
-    display: flex;
-    align-items: center;
-    gap: .6rem;
-    cursor: pointer;
-    background: #111827;
-    padding: .35rem .9rem;
-    border-radius: 9999px;
-    transition: transform .15s ease, background .2s ease
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-#user-info:hover {
-    background: #1f2937;
-    transform: translateY(-1px)
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
-#display-name {
-    font-weight: 600
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
 }
 
-#avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%
+.nav-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.auth-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.auth-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-info:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-name {
+  font-weight: 600;
+  color: #f3f4f6;
 }
 
 main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem
+  flex: 1;
+  padding: 4rem 0;
+  min-height: calc(100vh - 200px);
 }
 
-.welcome {
-    text-align: center;
-    max-width: 720px
+.content-area {
+  min-height: 400px;
 }
 
-.welcome h1 {
-    font-size: 2.4rem;
-    margin-bottom: .5rem
+footer {
+  background: rgba(15, 15, 15, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 0;
+  margin-top: 4rem;
 }
 
-.welcome p {
-    opacity: .8
+.footer-content {
+  text-align: center;
+  color: #9ca3af;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .header-content {
+    padding: 0.75rem 0;
+  }
+  
+  .logo {
+    font-size: 1.25rem;
+  }
+  
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+  }
 }

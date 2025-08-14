@@ -3,23 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Login</title>
+  <title>G-Source</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <div class="logo">MySite</div>
-    <div id="user-info">
-      <span id="display-name">Login</span>
-      <img id="avatar" alt="avatar" style="display:none;">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <img src="assets/t_Icon.png" alt="G-Source" class="logo-icon">
+          <span>G-Source</span>
+        </div>
+        
+        <nav class="nav">
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#browse">Browse</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#community">Community</a></li>
+          </ul>
+          
+          <div class="user-section">
+            <div id="guest-auth" class="auth-btn">
+              <span>Login with Discord</span>
+            </div>
+            
+            <div id="user-info" class="user-info hidden">
+              <img id="user-avatar" class="user-avatar" alt="User Avatar">
+              <span id="user-name" class="user-name"></span>
+            </div>
+          </div>
+        </nav>
+      </div>
     </div>
   </header>
+
   <main>
-    <div class="welcome">
-      <h1>Welcome</h1>
-      <p>Sign in with Discord to get started</p>
+    <div class="container">
+      <div class="content-area">
+        
+      </div>
     </div>
   </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2024 G-Source. Built with modern web technologies.</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
