@@ -17,7 +17,7 @@
         
         <nav class="nav">
           <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#browse">Browse</a></li>
             <li><a href="#resources">Resources</a></li>
             <li><a href="#community">Community</a></li>
@@ -41,10 +41,30 @@
   <main>
     <div class="container">
       <div class="content-area">
-        
+        <section id="about-section" class="about-content">
+          <h1>About G-Source</h1>
+          <div id="about-text">
+            <p>Loading about information...</p>
+          </div>
+        </section>
       </div>
     </div>
   </main>
+
+  <div id="profile-popup" class="profile-popup hidden">
+    <div class="profile-popup-content">
+      <div class="profile-header">
+        <img id="popup-avatar" class="popup-avatar" alt="User Avatar">
+        <div class="profile-info">
+          <h3 id="popup-username">Username</h3>
+          <p id="popup-discriminator">#0000</p>
+        </div>
+      </div>
+      <button id="logout-btn" class="logout-btn">Log Out</button>
+    </div>
+  </div>
+
+  <div id="popup-overlay" class="popup-overlay hidden"></div>
 
   <footer>
     <div class="container">
@@ -54,6 +74,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js"></script>
 </body>
 </html>
