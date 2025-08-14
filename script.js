@@ -1,27 +1,50 @@
 const clientId = '1405637510008279177'
-const redirectUri = window.location.origin + '/callback.html'
+const redirectUri = window.location.origin
 const scopes = 'identify'
 
-document.getElementById('login-btn').onclick = () => {
-  window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${scopes}`
-}
+const displayNameEl = document.getElementById('display-name')
+const avatarEl = document.getElementById('avatar')
 
-document.getElementById('logout-btn').onclick = () => {
-  localStorage.removeItem('discord_user')
-  showLogin()
+function showUser(user) {
+  displayNameEl.textContent = user.username
+  avatarEl.src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+  avatarEl.style.display = 'block'
 }
 
 function showLogin() {
-  document.getElementById('login-card').style.display = 'block'
-  document.getElementById('user-card').style.display = 'none'
+  displayNameEl.textContent = 'Login'
+  avatarEl.style.display = 'none'
 }
 
-function showUser(user) {
-  document.getElementById('username').textContent = user.username
-  document.getElementById('avatar').src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-  document.getElementById('login-card').style.display = 'none'
-  document.getElementById('user-card').style.display = 'block'
+displayNameEl.onclick = () => {
+  if (!localStorage.getItem('discord_user')) {
+    window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${scopes}`
+  } else {
+    localStorage.removeItem('discord_user')
+    showLogin()
+  }
+}
+
+const params = new URLSearchParams(window.location.search)
+const code = params.get('code')
+
+if (code) {
+  fetch('/api/exchange', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ code })
+  })
+    .then(res => res.json())
+    .then(user => {
+      localStorage.setItem('discord_user', JSON.stringify(user))
+      window.history.replaceState({}, document.title, '/')
+      showUser(user)
+    })
 }
 
 const storedUser = localStorage.getItem('discord_user')
-if (storedUser) showUser(JSON.parse(storedUser))
+if (storedUser) {
+  showUser(JSON.parse(storedUser))
+} else {
+  showLogin()
+}
