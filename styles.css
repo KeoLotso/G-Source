@@ -1,65 +1,80 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #0b0d12;
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial;
+    background: #0b0d12;
+    color: #e5e7eb;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column
 }
 
 header {
-  background: #1f2937;
-  padding: 0.8rem 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    position: sticky;
+    top: 0;
+    background: #0f172a;
+    border-bottom: 1px solid #1f2937;
+    padding: .8rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: saturate(180%) blur(6px)
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 1.2rem;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: .3px
 }
 
 #user-info {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  background: #374151;
-  padding: 0.3rem 0.8rem;
-  border-radius: 9999px;
-  transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    cursor: pointer;
+    background: #111827;
+    padding: .35rem .9rem;
+    border-radius: 9999px;
+    transition: transform .15s ease, background .2s ease
 }
 
 #user-info:hover {
-  background: #4b5563;
+    background: #1f2937;
+    transform: translateY(-1px)
+}
+
+#display-name {
+    font-weight: 600
 }
 
 #avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%
 }
 
 main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem
 }
 
 .welcome {
-  text-align: center;
+    text-align: center;
+    max-width: 720px
 }
 
 .welcome h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+    font-size: 2.4rem;
+    margin-bottom: .5rem
+}
+
+.welcome p {
+    opacity: .8
 }
