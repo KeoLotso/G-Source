@@ -145,7 +145,8 @@ main {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem 0;
-  background: transparent;
+  background: none;
+  color: #e5e7eb;
 }
 
 .about-content h1 {
@@ -153,7 +154,7 @@ main {
   font-weight: 700;
   margin-bottom: 2rem;
   text-align: center;
-  color: #f3f4f6; 
+  color: #e5e7eb;
   background: none;
   -webkit-background-clip: unset;
   -webkit-text-fill-color: unset;
@@ -165,7 +166,6 @@ main {
   margin-bottom: 1.5rem;
   color: #d1d5db;
 }
-
 
 .profile-popup {
   position: fixed;
